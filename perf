@@ -1,0 +1,8 @@
+#!/bin/bash
+
+./test $1 > perf.out
+
+grep "PASSED" perf.out
+grep "FAILED" perf.out
+grep "CPI" perf.out
+grep "ns total time to execute" perf.out

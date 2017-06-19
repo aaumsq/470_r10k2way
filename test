@@ -1,0 +1,16 @@
+#!/bin/bash
+if [[ $# -ne 1 ]]; then
+	echo "name not given"
+else
+	./asm $1
+	make build_pipeline > build.out
+	make run_pipeline
+	grep -E "@@@|###" pipeline_program.out > program.at
+	sdiff program.at "baseline/$(basename "$1" .at).at" > "testresult.out"
+	cat testresult.out
+	if ! diff -q program.at "baseline/$(basename "$1" .at).at" &>/dev/null; then
+ 		echo "FAILED"
+ 	else
+ 		echo "PASSED"
+	fi
+fi

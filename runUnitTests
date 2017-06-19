@@ -1,0 +1,95 @@
+#!/bin/bash
+passed=true
+make run_rob_ut > robTest.out
+if grep -q PASSED robTest.out; then
+	echo "ROB PASSED"
+else
+	passed=false
+	echo "ROB FAILED"
+fi
+
+make run_rs_ut > rsTest.out
+if grep -q PASSED rsTest.out; then
+	echo "RS PASSED"
+else
+	passed=false
+	echo "RS FAILED"
+fi
+
+make run_mt_ut > mtTest.out
+if grep -q PASSED mtTest.out; then
+	echo "MT PASSED"
+else
+	passed=false
+	echo "MT FAILED"
+fi
+
+make run_fl_ut > flTest.out
+if grep -q PASSED flTest.out; then
+	echo "FL PASSED"
+else
+	passed=false
+	echo "FL FAILED"
+fi
+
+make run_regfile_ut > regfileTest.out
+if grep -q PASSED regfileTest.out; then
+	echo "REG PASSED"
+else
+  passed=false
+	echo "REG FAILED"
+fi
+
+make run_CDB_ut > cdbTest.out
+if grep -q PASSED cdbTest.out; then
+	echo "CDB PASSED"
+else
+  passed=false
+	echo "CDB FAILED"
+fi
+
+make run_FUS_ut > fusTest.out
+if grep -q PASSED fusTest.out; then
+        echo "FUS PASSED"
+else
+  passed=false
+        echo "FUS FAILED"
+fi
+
+make run_mult_ut > multTest.out
+if grep -q PASSED multTest.out; then
+        echo "MULT PASSED"
+else
+  passed=false
+        echo "MULT FAILED"
+fi
+
+make run_alu_ut > aluTest.out
+if grep -q PASSED aluTest.out; then
+        echo "ALU PASSED"
+else
+  passed=false
+        echo "ALU FAILED"
+fi
+
+make run_FUBI_ut > fubITest.out
+if grep -q PASSED fubITest.out; then
+        echo "FUBI PASSED"
+else
+  passed=false
+        echo "FUBI FAILED"
+fi
+
+make run_InstrBuffer_ut > instrbuffTest.out
+if grep -q PASSED instrbuffTest.out; then
+        echo "IB PASSED"
+else
+  passed=false
+        echo "IB FAILED"
+fi
+
+if [[ "$passed" == "true" ]]; then
+	echo "PASSED"
+else
+	echo "FAILED"
+fi

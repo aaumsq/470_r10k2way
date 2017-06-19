@@ -1,0 +1,11 @@
+#!/bin/bash
+
+rm baselineproc/test_progs/*
+mkdir baselineproc/test_progs/
+cp test_progs/*.s baselineproc/test_progs
+cd baselineproc
+./asmall
+./createbaseline
+cd ..
+rm baseline/*
+cp -r baselineproc/baseline .

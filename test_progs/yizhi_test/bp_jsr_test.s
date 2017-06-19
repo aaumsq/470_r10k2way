@@ -1,0 +1,17 @@
+        lda     $r1,1        
+        lda     $r27,8
+        mulq    $r1,8,$r2
+        mulq    $r1,8,$r3
+        mulq    $r1,8,$r4
+        mulq    $r1,8,$r5
+        mulq    $r1,8,$r6
+        mulq    $r1,8,$r7
+        mulq    $r1,8,$r8
+        mulq    $r1,8,$r9
+        mulq    $r1,8,$r10
+        mulq    $r1,8,$r11
+        mulq    $r1,8,$r12
+        addq    $r1,1,$r1
+        addq    $r27,7,$r27
+        jsr     $r26,($r27)
+	call_pal        0x555

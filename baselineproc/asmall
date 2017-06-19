@@ -1,0 +1,12 @@
+#!/bin/bash
+rm objs/*
+if [ ! -d "objs" ]; then
+	mkdir objs
+fi
+for filename in test_progs/*.s; do
+	if [[ ! -e "$filename" ]]; then continue; fi
+	if [ ! -d "objs" ]; then
+		mkdir objs
+	fi	
+	./vs-asm "$filename" > "objs/$(basename "$filename" .s).mem"
+done

@@ -1,0 +1,19 @@
+#ib_store_en st_en ld_en [fus_SQIndex] [fus_SQIndex] rob_nRetireStores [alu_data] [alu_data] [alu_addr] [alu_addr] [ld_addr] [ld_addr] br_pred_wrong bs_recov_sq_tail  bs_recov_sq_empty dcachectrl_st_request_sent
+3        	 0     0      0       	   0      	   	 0       			  0   		 0   		0      	   0       	  0         0        0      	 0       0      0
+#dispatchs 2 stores
+1        	 3     0      0       	   1      	   	 0       			  111   	 112   		100        200     	  0         0        0      	 0       0      0
+#issues 2 stores and dispatch 1
+1        	 1     0      2       	   0      	     0       			  113   	 999   		300        999        0         0        0      	 0       0      0
+#issues 1 stores and dispatch 1
+3        	 1     0      3       	   0      	     0       			  114   	 999   		400        999        0         0        0      	 0       0      0
+#issues 1 stores and dispatch 2
+3        	 3     1      4       	   5      	     2       			  115   	 116   		500        600        200       0        0      	 0       0      1 
+#issues 2 stores, dispatch 2, retire 2 and load 2
+0        	 3     3      6       	   7      	     1       			  117   	 118   		700        800        400       800      0      	 0       0      0 
+#issues 2 stores, dispatch 0, retire 1 and load 2
+0        	 0     2      0       	   0      	     1       			  999   	 999   		999        999        0         300      0      	 0       0      1 
+#issues 0 stores, dispatch 0, retire 1 and load 1
+0        	 0     1      1       	   3      	     2       			  999   	 999   		999        999        500       0        0      	 0       0      1 
+#issues 0 stores, dispatch 0 and retire 2 load 1
+0        	 0     3      0       	   0      	     2       			  999   	 999   		999        999        100       800      0      	 0       0      1 
+#issues 0 stores, dispatch 0 and retire 2

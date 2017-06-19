@@ -1,0 +1,26 @@
+[cap]_UNIT_TESTBENCH = testbench/[name]UnitTest.v testbench/[name]PrintSim.c
+[cap]_SIMFILES = verilog/[name].v
+[cap]_SYNFILES = $(SYNTH_DIR)/[name].vg
+
+
+synth/[name].vg:      $([cap]_SIMFILES) synth/[name].tcl Makefile
+	cd synth && dc_shell-t -f ./[name].tcl | tee [name]_synth.out 
+
+
+
+
+build_[name]_ut:	$(BASE) $([cap]_SIMFILES) $([cap]_UNIT_TESTBENCH) Makefile
+	$(VCS) $(BASE) $([cap]_UNIT_TESTBENCH) $([cap]_SIMFILES) -o [name]_simv
+
+.PHONY: run_[name]_ut
+run_[name]_ut: build_[name]_ut Makefile
+	./[name]_simv | tee [name]_program.out
+
+
+
+[lowcasename]_syn_simv:	$(BASE) $([cap]_SYNFILES) $([cap]_UNIT_TESTBENCH) Makefile
+	$(VCS) $(BASE) $([cap]_UNIT_TESTBENCH) $([cap]_SYNFILES) $(LIB) +define+SYNTH_TEST -o [lowcasename]_syn_simv
+
+.PHONY: [lowcasename]_syn
+[lowcasename]_syn:	[lowcasename]_syn_simv Makefile
+	./[lowcasename]_syn_simv | tee [lowcasename]_syn_program.out

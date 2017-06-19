@@ -1,0 +1,25 @@
+#!/bin/bash
+if [[ $# -ne 1 ]]; then
+	echo "name not given"
+else
+	./asm $1
+	cp program.mem baselineproc/program.mem
+	cd baselineproc
+	make
+	cp pipeline.out "../baseline/$1.pipeline.out"
+	cp writeback.out "../baseline/$1.writeback.out"
+	cp program.out "../baseline/$1.program.out"
+	grep -E "@@@|###" program.out > program.at
+	cp program.at "../baseline/$1.at"
+	cd ..
+	make build_pipeline > build.out
+	make run_pipeline
+	grep -E "@@@|###" pipeline_program.out > program.at
+	sdiff program.at "baseline/$(basename "$1" .at).at" > "testresult.out"
+	cat testresult.out
+	if ! diff -q program.at "baseline/$(basename "$1" .at).at" &>/dev/null; then
+ 		echo "FAILED"
+ 	else
+ 		echo "PASSED"
+	fi
+fi	

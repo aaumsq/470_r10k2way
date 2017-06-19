@@ -1,0 +1,36 @@
+#!/bin/bash
+make rob_syn > /dev/null
+make rs_syn > /dev/null
+make reg_syn > /dev/null
+make cdb_syn > /dev/null
+if grep -q PASSED rob_syn_program.out; then
+	echo "ROB PASSED"
+else
+	echo "ROB FAILED"
+fi
+
+if grep -q PASSED rs_syn_program.out; then
+	echo "RS PASSED"
+else
+	echo "RS FAILED"
+fi
+
+if grep -q PASSED reg_syn_program.out; then
+	echo "REG PASSED"
+else
+	echo "REG FAILED"
+fi
+
+if grep -q PASSED cdb_syn_program.out; then
+	echo "CDB PASSED"
+else
+	echo "CDB FAILED"
+fi
+
+if grep -q PASSED rob_syn_program.out; then
+	if grep -q PASSED rs_syn_program.out; then
+    if grep -q PASSED reg_syn_program.out; then
+		  echo "PASSED"
+	  fi
+  fi
+fi

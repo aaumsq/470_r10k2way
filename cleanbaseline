@@ -1,0 +1,8 @@
+#!/bin/bash
+
+rm baseline/*
+rm baselineproc/baseline/*
+rm baselineproc/test_progs/*
+cd baselineproc
+make clean
+cd ../

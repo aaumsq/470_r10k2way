@@ -1,0 +1,21 @@
+#!/bin/bash
+if [ $# -eq 0 ]; then
+	echo "Output directory not specified"
+	exit 1
+
+fi
+
+if [[ ! -d $1 ]]; then
+	mkdir $1
+fi
+for filename in objs/*.mem; do
+	if [[ ! -e "$filename" ]]; then continue; fi
+	cp "$filename" program.mem
+	make
+	testName="$(basename "$filename" .mem)"
+	cp pipeline.out "$1/$testName.pipeline.out"
+	cp writeback.out "$1/$testName.writeback.out"
+	cp program.out "$1/$testName.program.out"
+	grep -E "@@@|###" program.out > program.at
+	cp program.at "$1/$testName.at"
+done

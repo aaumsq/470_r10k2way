@@ -1,0 +1,42 @@
+                                                                            D-MEM Bus &
+Cycle:      IF      |     ID      |     EX      |     MEM     |     WB      Reg Result
+    0:    4:lda     |   0:-       |   0:-       |   0:-       |   0:-       BUS_LOAD  MEM[0] accepted 1
+    1:    8:-       |   4:lda     |   0:-       |   0:-       |   0:-       BUS_LOAD  MEM[0] accepted 1
+    2:    8:-       |   8:-       |   4:lda     |   0:-       |   0:-       BUS_LOAD  MEM[0] accepted 1
+    3:    8:-       |   8:-       |   8:-       |   4:lda     |   0:-       BUS_LOAD  MEM[0] accepted 1
+    4:    8:-       |   8:-       |   8:-       |   8:-       |   4:lda     r0=1  BUS_LOAD  MEM[0] accepted 1
+    5:    8:addq    |   8:-       |   8:-       |   8:-       |   8:-       BUS_LOAD  MEM[0] accepted 1
+    6:   12:-       |   8:addq    |   8:-       |   8:-       |   8:-       BUS_LOAD  MEM[8] accepted 1
+    7:   12:-       |  12:-       |   8:addq    |   8:-       |   8:-       BUS_LOAD  MEM[8] accepted 1
+    8:   12:-       |  12:-       |  12:-       |   8:addq    |   8:-       BUS_LOAD  MEM[8] accepted 1
+    9:   12:-       |  12:-       |  12:-       |  12:-       |   8:addq    r0=2  BUS_LOAD  MEM[8] accepted 1
+   10:   12:addq    |  12:-       |  12:-       |  12:-       |  12:-       BUS_LOAD  MEM[8] accepted 1
+   11:   16:-       |  12:addq    |  12:-       |  12:-       |  12:-       BUS_LOAD  MEM[8] accepted 1
+   12:   16:-       |  16:-       |  12:addq    |  12:-       |  12:-       BUS_LOAD  MEM[8] accepted 1
+   13:   16:-       |  16:-       |  16:-       |  12:addq    |  12:-       BUS_LOAD  MEM[8] accepted 1
+   14:   16:-       |  16:-       |  16:-       |  16:-       |  12:addq    r0=4  BUS_LOAD  MEM[8] accepted 1
+   15:   16:addq    |  16:-       |  16:-       |  16:-       |  16:-       BUS_LOAD  MEM[8] accepted 1
+   16:   20:-       |  16:addq    |  16:-       |  16:-       |  16:-       BUS_LOAD  MEM[16] accepted 1
+   17:   20:-       |  20:-       |  16:addq    |  16:-       |  16:-       BUS_LOAD  MEM[16] accepted 1
+   18:   20:-       |  20:-       |  20:-       |  16:addq    |  16:-       BUS_LOAD  MEM[16] accepted 1
+   19:   20:-       |  20:-       |  20:-       |  20:-       |  16:addq    r0=8  BUS_LOAD  MEM[16] accepted 1
+   20:   20:stq     |  20:-       |  20:-       |  20:-       |  20:-       BUS_LOAD  MEM[16] accepted 1
+   21:   24:-       |  20:stq     |  20:-       |  20:-       |  20:-       BUS_LOAD  MEM[16] accepted 1
+   22:   24:-       |  24:-       |  20:stq     |  20:-       |  20:-       BUS_LOAD  MEM[16] accepted 1
+   23:   24:-       |  24:-       |  24:-       |  20:stq     |  20:-       BUS_STORE MEM[4104] = 8 accepted 1
+   24:   24:-       |  24:-       |  24:-       |  24:-       |  20:stq     BUS_LOAD  MEM[16] accepted 1
+   25:   24:ldq     |  24:-       |  24:-       |  24:-       |  24:-       BUS_LOAD  MEM[16] accepted 1
+   26:   28:-       |  24:ldq     |  24:-       |  24:-       |  24:-       BUS_LOAD  MEM[24] accepted 1
+   27:   28:-       |  28:-       |  24:ldq     |  24:-       |  24:-       BUS_LOAD  MEM[24] accepted 1
+   28:   28:-       |  28:-       |  28:-       |  24:ldq     |  24:-       BUS_LOAD  MEM[4104] accepted 1
+   29:   28:-       |  28:-       |  28:-       |  28:-       |  24:ldq     r0=8  BUS_LOAD  MEM[24] accepted 1
+   30:   28:stq     |  28:-       |  28:-       |  28:-       |  28:-       BUS_LOAD  MEM[24] accepted 1
+   31:   32:-       |  28:stq     |  28:-       |  28:-       |  28:-       BUS_LOAD  MEM[24] accepted 1
+   32:   32:-       |  32:-       |  28:stq     |  28:-       |  28:-       BUS_LOAD  MEM[24] accepted 1
+   33:   32:-       |  32:-       |  32:-       |  28:stq     |  28:-       BUS_STORE MEM[4104] = 8 accepted 1
+   34:   32:-       |  32:-       |  32:-       |  32:-       |  28:stq     BUS_LOAD  MEM[24] accepted 1
+   35:   32:halt    |  32:-       |  32:-       |  32:-       |  32:-       BUS_LOAD  MEM[24] accepted 1
+   36:   36:-       |  32:halt    |  32:-       |  32:-       |  32:-       BUS_LOAD  MEM[32] accepted 1
+   37:   36:-       |  36:-       |  32:halt    |  32:-       |  32:-       BUS_LOAD  MEM[32] accepted 1
+   38:   36:-       |  36:-       |  36:-       |  32:halt    |  32:-       BUS_LOAD  MEM[32] accepted 1
+   39:   36:-       |  36:-       |  36:-       |  36:-       |  32:halt    BUS_LOAD  MEM[32] accepted 1
